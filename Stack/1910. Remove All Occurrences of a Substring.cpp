@@ -1,4 +1,5 @@
 
+// Approach - 1 O(N^2)
 class Solution
 {
 public:
@@ -18,6 +19,7 @@ public:
     }
 };
 
+// Approach - 2 Stack
 class Solution
 {
 public:
@@ -56,6 +58,30 @@ public:
             st.pop();
         }
         reverse(result.begin(), result.end()); // O(N)
+        return result;
+    }
+};
+
+// Approach - 3 O(N) String as Stack
+class Solution
+{
+public:
+    // TC: O(N)
+    string removeOccurrences(string s, string part)
+    {
+        string result = "";
+        int n = s.size();
+        for (int i = 0; i < n; i++)
+        {
+            result.push_back(s[i]);
+            if (result.size() >= part.size())
+            {
+                if (result.substr(result.size() - part.size()) == part)
+                {
+                    result.erase(result.size() - part.size());
+                }
+            }
+        }
         return result;
     }
 };
