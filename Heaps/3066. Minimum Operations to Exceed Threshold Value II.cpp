@@ -11,20 +11,20 @@ public:
         //     pq.push(nums[i]);
         // }
         int count = 0;
-
-        while (!pq.empty())
+        // O(N * 3logN)
+        while (!pq.empty()) // O(N)
         {
             if (pq.top() < k)
             {
 
                 long smallest = pq.top(); // minimum
-                pq.pop();
+                pq.pop();                 // O(logN)
 
                 long secondSmallest = pq.top(); // max
-                pq.pop();
+                pq.pop();                       // O(logN)
                 long newNum = min(x, y) * 2LL + max(x, y);
                 // min will alwasy be smallest and max will always be secondSmallest
-                pq.push(smallest * 2L + secondSmallest);
+                pq.push(smallest * 2L + secondSmallest); // O(logN)
 
                 count++;
             }
